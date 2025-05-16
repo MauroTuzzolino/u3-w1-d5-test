@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import CustomNavbar from "./components/CustomNavbar";
 import TvShowsHeader from "./components/TvShowsHeader";
-import TrendingNow from "./components/TrendingNow";
-import WatchItAgain from "./components/WatchItAgain";
-import NewReleases from "./components/NewReleases";
+import MovieRow from "./components/MovieRow";
 import Footer from "./components/Footer";
 import PageLoader from "./components/PageLoader";
 import PageError from "./components/PageError";
@@ -36,9 +34,9 @@ function App() {
       <CustomNavbar />
       <div className="mt-4">
         <TvShowsHeader />
-        <TrendingNow />
-        <WatchItAgain />
-        <NewReleases />
+        <MovieRow title="Trending Now" apiUrl="http://www.omdbapi.com/?apikey=877c77c7&s=Mission%20Impossible&type=movie" />
+        <MovieRow title="Watch it Again" apiUrl="http://www.omdbapi.com/?apikey=877c77c7&s=Avengers&type=movie" />
+        <MovieRow title="New Releases" apiUrl="http://www.omdbapi.com/?apikey=877c77c7&s=Lord%20of%20the%20Rings&type=movie" />
       </div>
       <Footer />
     </div>
