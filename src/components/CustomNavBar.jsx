@@ -19,7 +19,7 @@ const CustomNavbar = () => {
             <Nav.Link href="#" className="fw-bold">
               TV Shows
             </Nav.Link>
-            <Nav.Link href="#" className="fw-bold">
+            <Nav.Link href="#" className="fw-bold text-secondary">
               Movies
             </Nav.Link>
             <Nav.Link href="#" className="fw-bold">

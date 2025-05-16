@@ -1,26 +1,49 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col, Spinner, Alert } from "react-bootstrap";
 
-import img1 from "../assets/img/1.png";
-import img2 from "../assets/img/2.png";
-import img3 from "../assets/img/3.png";
-import img4 from "../assets/img/4.png";
-import img5 from "../assets/img/5.png";
-import img6 from "../assets/img/6.png";
+const API_URL = "http://www.omdbapi.com/?apikey=877c77c7&s=Mission%20Impossible&type=movie";
 
-const images = [img1, img2, img3, img4, img5, img6];
+const TrendingNow = () => {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-const TrendingNow = () => (
-  <Container fluid>
-    <h4>Trending Now</h4>
-    <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-6 mb-4">
-      {images.map((img, idx) => (
-        <Col key={idx} className="mb-2 text-center px-1">
-          <img className="img-fluid" src={img} alt="movie" />
-        </Col>
-      ))}
-    </Row>
-  </Container>
-);
+  useEffect(() => {
+    fetch(API_URL)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.Response === "True") {
+          setMovies(data.Search);
+        } else {
+          setError("Nessun risultato trovato.");
+        }
+        setLoading(false);
+      })
+      .catch(() => {
+        setError("Errore nel caricamento dei dati.");
+        setLoading(false);
+      });
+  }, []);
+
+  return (
+    <Container fluid>
+      <h4>Trending Now</h4>
+      {loading && <Spinner animation="border" variant="light" />}
+      {error && <Alert variant="danger">{error}</Alert>}
+      <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-6 mb-4">
+        {movies.slice(0, 6).map((movie) => (
+          <Col key={movie.imdbID} className="mb-2 text-center px-1">
+            <img
+              className="img-fluid"
+              src={movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/300x450?text=No+Image"}
+              alt={movie.Title}
+              style={{ minHeight: "100%", minWidth: "100%" }}
+            />
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  );
+};
 
 export default TrendingNow;
