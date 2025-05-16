@@ -34,9 +34,9 @@ function App() {
       <CustomNavbar />
       <div className="mt-4">
         <TvShowsHeader />
-        <MovieRow title="Trending Now" apiUrl="http://www.omdbapi.com/?apikey=877c77c7&s=Mission%20Impossible&type=movie" />
-        <MovieRow title="Watch it Again" apiUrl="http://www.omdbapi.com/?apikey=877c77c7&s=Avengers&type=movie" />
-        <MovieRow title="New Releases" apiUrl="http://www.omdbapi.com/?apikey=877c77c7&s=Lord%20of%20the%20Rings&type=movie" />
+        <MovieRow title="Trending Now" apiUrl="http://www.omdbapi.com/?apikey=877c77c7&s=Doraemon&type=movie" />
+        <MovieRow title="Watch it Again" apiUrl="http://www.omdbapi.com/?apikey=877c77c7&s=detective conan&type=movie" />
+        <MovieRow title="New Releases" apiUrl="http://www.omdbapi.com/?apikey=877c77c7&s=Naruto&type=movie" />
       </div>
       <Footer />
     </div>
