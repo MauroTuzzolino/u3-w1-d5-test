@@ -5,7 +5,7 @@ import logo from "../assets/logo.png";
 
 const CustomNavbar = () => {
   return (
-    <Navbar expand="lg" bg="dark" variant="dark">
+    <Navbar expand="lg" variant="dark">
       <Container fluid className="d-flex flex-row align-items-center justify-content-between">
         <Navbar.Brand href="#">
           <img src={logo} alt="Logo" style={{ width: "100px", height: "55px" }} />
